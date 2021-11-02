@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import ContatoForm
+from django.contrib import messages
 
 
 def index(request):
@@ -7,7 +8,16 @@ def index(request):
 
 
 def contato(request):
-    form = ContatoForm()  # form recebe uma Instancia do Nosso formulário
+    # form recebe uma Instancia do Nosso formulário
+    form = ContatoForm(request.POST or None)
+
+    if str(request.method) == 'POST':
+        if form.is_valid():
+            form.send_email()            
+            messages.success(request, 'Contanto realizado com Sucesso!')
+            form = ContatoForm()
+        else:
+            messages.error(request, 'Erro ao enviar sua mensagem.')
 
     context = {
         'form': form

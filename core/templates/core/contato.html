@@ -6,11 +6,10 @@
 <div class="pcoded-content">
   <div class="pcoded-inner-content">
     <div class="main-body">
+              {% bootstrap_messages %}
       <div class="page-wrapper">
         <div class="page-body">
           <div class="row">
-
-          {% bootstrap_messages %}
 
             <form action=" {% url 'contato' %}" method="POST" class="form">
               {% csrf_token %}

@@ -141,3 +141,5 @@ MESSAGE_TAGS = {
     constants.SUCCESS: 'alert-success',
     constants.WARNING: 'alert-warning',
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
