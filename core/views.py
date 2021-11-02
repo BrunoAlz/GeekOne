@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import ContatoForm
+from .forms import ContatoForm, ProdutoModelForm
 from django.contrib import messages
 
 
@@ -13,7 +13,7 @@ def contato(request):
 
     if str(request.method) == 'POST':
         if form.is_valid():
-            form.send_email()            
+            form.send_email()
             messages.success(request, 'Contanto realizado com Sucesso!')
             form = ContatoForm()
         else:
@@ -26,4 +26,21 @@ def contato(request):
 
 
 def produto(request):
-    return render(request, 'core/produto.html')
+    if str(request.method) == 'POST':  # Verifica se o request é do tipo POST
+        # Recupera os dados do HTML
+        form = ProdutoModelForm(request.POST, request.FILES)
+        if form.is_valid():  # Verifica se tudo foi preenchido
+
+            form.save()
+            
+            messages.success(request, 'Produto Salvo Sucesso!')
+            form = ProdutoModelForm()  # Limpa o FORM
+        else:
+            messages.error(request, 'Erro ao Salvar')
+    else:
+        form = ProdutoModelForm()
+
+    context = {
+        'form': form
+    }
+    return render(request, 'core/produto.html', context)

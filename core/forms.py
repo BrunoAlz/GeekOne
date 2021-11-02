@@ -1,6 +1,9 @@
 from django import forms
-from django.core.mail.message import EmailMessage
+from django.forms import fields
+# from django.core.mail.message import EmailMessage
 from utils.constants import CONSTANTES_ESTADOS, CONSTANTES_PAISES
+
+from .models import Produto
 
 
 class ContatoForm(forms.Form):
@@ -43,6 +46,13 @@ class ContatoForm(forms.Form):
     #         body=conteudo,
     #         from_email='contato@teste.com.br',
     #         to=['testeEmail@djangoTeste.com.br'],
-    #         headers={'Reply-To': ContatoEmail}           
+    #         headers={'Reply-To': ContatoEmail}
     #     )
     #     mail.send()
+
+
+class ProdutoModelForm(forms.ModelForm):
+    class Meta:
+        model = Produto
+        fields = ['NomeProduto', 'PrecoProduto',
+                  'EstoqueProduto', 'ProdutoImage', ]
