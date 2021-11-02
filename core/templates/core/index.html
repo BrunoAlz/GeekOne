@@ -73,7 +73,77 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-4 col-md-12">
+                    <div class="col-md-12">
+                  <div class="card table-card">
+                     <div class="card-header">
+                        <h5>Produtos</h5>
+                        <div class="card-header-right">
+                           <ul class="list-unstyled card-option">
+                              <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i></li>
+                              <li><i class="feather icon-maximize full-card"></i></li>
+                              <li><i class="feather icon-minus minimize-card"></i></li>
+                              <li><i class="feather icon-refresh-cw reload-card"></i></li>
+                              <li><i class="feather icon-trash close-card"></i></li>
+                              <li><i class="feather icon-chevron-left open-card-option"></i></li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="card-block p-b-0">
+                        <div class="table-responsive">
+                           <table class="table table-xs table-hover m-b-0">
+                              <thead>
+                                 <tr>
+                                    <th>id</th>
+                                    <th>Nome</th>
+                                    <th>Preço</th>
+                                    <th>Estoque</th>
+                                    <th>Status</th>
+                                    <th>Rating</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                              {% for produto in produtos %}
+                                <tr>
+                                    <td> {{produto.id}} </td>
+                                    <td> <a class="waves-effect md-trigger" href="#modal{{produto.id}}"  data-toggle="modal">{{produto.NomeProduto}} </a></td>
+                                    <td> {{produto.PrecoProduto}} </td>
+                                    <td> <b>{{produto.EstoqueProduto}}</b></td>
+                                    {% if produto.Ativo == False %}
+                                        <td><label class="label label-danger">Inativo</label></td>
+                                    {% else %}
+                                        <td><label class="label label-success">Ativo</label></td>
+                                    {% endif %}
+                                    <td>
+                                       <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                       <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                       <a href="#!"><i class="fa fa-star f-12 text-c-yellow"></i></a>
+                                       <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
+                                       <a href="#!"><i class="fa fa-star f-12 text-default"></i></a>
+                                    </td>
+                                </tr>
+                                <div class="modal fade bd-example-modal-lg show" id="modal{{produto.id}}" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5>{{produto.NomeProduto}}</h5>
+                                                <button type="button" class="close" data-dismiss="modal">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body" id="dynamic-content">
+                                                <img src="{{produto.ProdutoImage.url}}" alt="{{produto.NomeProduto}}" class="img-fluid">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+                    {% comment %} <div class="col-xl-4 col-md-12">
                         <div class="card comp-card">
                             <div class="card-body">
                                 <div class="row align-items-center">
@@ -120,7 +190,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> {% endcomment %}
+
+
                 </div>
             </div>
         </div>
