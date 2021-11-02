@@ -24,25 +24,25 @@ class ContatoForm(forms.Form):
     ContatoMensagem = forms.CharField(
         label='Mensagem', widget=forms.Textarea())
 
-    def send_email(self):
-        ContatoPNome = self.cleaned_data['ContatoPNome']
-        ContatoUNome = self.cleaned_data['ContatoUNome']
-        ContatoUsername = self.cleaned_data['ContatoUsername']
-        ContatoEmail = self.cleaned_data['ContatoEmail']
-        ContatoEndereco1 = self.cleaned_data['ContatoEndereco1']
-        ContatoPais = self.cleaned_data['ContatoPais']
-        ContatoEstado = self.cleaned_data['ContatoEstado']
-        ContatoCEP = self.cleaned_data['ContatoCEP']
-        ContatoAssunto = self.cleaned_data['ContatoAssunto']
-        ContatoMensagem = self.cleaned_data['ContatoMensagem']
+    # def send_email(self):
+    #     ContatoPNome = self.cleaned_data['ContatoPNome']
+    #     ContatoUNome = self.cleaned_data['ContatoUNome']
+    #     ContatoUsername = self.cleaned_data['ContatoUsername']
+    #     ContatoEmail = self.cleaned_data['ContatoEmail']
+    #     ContatoEndereco1 = self.cleaned_data['ContatoEndereco1']
+    #     ContatoPais = self.cleaned_data['ContatoPais']
+    #     ContatoEstado = self.cleaned_data['ContatoEstado']
+    #     ContatoCEP = self.cleaned_data['ContatoCEP']
+    #     ContatoAssunto = self.cleaned_data['ContatoAssunto']
+    #     ContatoMensagem = self.cleaned_data['ContatoMensagem']
 
-        conteudo = f'Nome: {ContatoPNome} {ContatoUNome} \n{ContatoUsername} \n {ContatoEmail}'
+    #     conteudo = f'Nome: {ContatoPNome} {ContatoUNome} \n{ContatoUsername} \n {ContatoEmail}'
 
-        mail = EmailMessage(
-            subject='Email testes',
-            body=conteudo,
-            from_email='contato@teste.com.br',
-            to=['testeEmail@djangoTeste.com.br'],
-            headers={'Reply-To': ContatoEmail}           
-        )
-        mail.send()
+    #     mail = EmailMessage(
+    #         subject='Email testes',
+    #         body=conteudo,
+    #         from_email='contato@teste.com.br',
+    #         to=['testeEmail@djangoTeste.com.br'],
+    #         headers={'Reply-To': ContatoEmail}           
+    #     )
+    #     mail.send()
